@@ -1,0 +1,96 @@
+.convolutionNode h5 {
+  background-color: #305aa6;
+  margin: 0;
+  padding: 2px 10px;
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: 400;
+  border-bottom: 1px solid #000000;
+}
+
+.convolutionNode {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  height: 50px;
+  background-color: #ffffff;
+}
+
+.convolutionNode section {
+  background-color: #ffffff;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.convolutionNode span {
+  font-size: 8px;
+  font-weight: 400;
+}
+
+section p {
+  margin: 0;
+}
+
+.side-drawer {
+  width: 400px;
+  height: 100vh;
+  background-color: #2d2d2d;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  transition: left 0.3s ease;
+  padding: 10px;
+  z-index: 9;
+}
+
+.headWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side-drawer.open {
+  right: 0;
+}
+
+.headWrapper button {
+  cursor: pointer;
+  color: #777777;
+}
+
+.side-drawer h1 {
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 2px;
+  color: #dfdfdf;
+}
+
+.label {
+  background-color: #383838;
+  border-color: #383838;
+  padding: 4px 6px 4px 6px;
+  font-size: 11px;
+  color: #dfdfdf;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentWrapper h6 {
+  min-width: 95px;
+  max-width: 95px;
+  padding-right: 10px;
+  font-size: 11px;
+  color: #dfdfdf;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+}
