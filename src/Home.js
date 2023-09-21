@@ -4,32 +4,51 @@ import ReactFlow, {
   Controls,
   useNodesState,
   useEdgesState,
+  MiniMap,
 } from "reactflow";
 
 import { initialNodes } from "./assets/initialNodes";
 import { SideDrawer } from "./components/SideDrawer";
-import { uniqueEdges, updateEdges, updateNodeStyle } from "./util";
+import { uniqueEdges, updateNodeStyle } from "./util";
 
 import "reactflow/dist/style.css";
 
 const defaultViewport = { x: 0, y: 0, zoom: 2.5 };
 
 const NeuralGraph = () => {
-  const [nodes, setNodes] = useNodesState(initialNodes);
-  const [edges, setEdges] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState({});
 
-  useEffect(() => {
+  const defaultEdges = () => {
     if (initialNodes.length) {
+      let newEdges = [];
       initialNodes.map((item) => {
-        setEdges(updateEdges(edges, item));
-        return null;
+        const input = item.data.parameters.input;
+        const output = item.data.parameters.output;
+        if (input?.length || output?.length) {
+          return output?.map((outValue) => {
+            return newEdges.push({
+              id: `${item.id}-${outValue}`,
+              source: item.id,
+              target: outValue,
+              type: "smoothstep",
+            });
+          });
+        }
+        return uniqueEdges(newEdges);
       });
+      setEdges(newEdges);
     }
+  };
+
+  useEffect(() => {
+    defaultEdges();
   }, []);
 
   const handleFromNodes = (id) => {
+    let newEdges = [];
     let newNodes = nodes.map((item) => {
       if (item.id === id) {
         return updateNodeStyle(item);
@@ -39,7 +58,6 @@ const NeuralGraph = () => {
         };
       }
     });
-    let newEdges = [];
     nodes.map((item) => {
       if (item.id === id) {
         const input = item.data.parameters.input;
@@ -95,7 +113,11 @@ const NeuralGraph = () => {
         <SideDrawer
           isOpen
           currentNode={currentNode}
-          onClick={() => setIsOpen(false)}
+          onClose={() => {
+            setIsOpen(false);
+            setNodes(initialNodes);
+            defaultEdges();
+          }}
           fromCallback={handleFromNodes}
           toCallback={handleToNodes}
         />
@@ -105,6 +127,8 @@ const NeuralGraph = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
             defaultViewport={defaultViewport}
             fitView
             attributionPosition="bottom-left"
@@ -113,9 +137,11 @@ const NeuralGraph = () => {
               setIsOpen(true);
               setCurrentNode(data);
               setNodes(initialNodes);
+              defaultEdges();
             }}
           />
-          <Controls />
+          <Controls showInteractive={false} />
+          <MiniMap zoomable pannable />
         </div>
       </ReactFlowProvider>
     </div>

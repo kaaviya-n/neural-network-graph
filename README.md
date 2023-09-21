@@ -41,4 +41,21 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 # About Neural Network Graph Project
 
-## Planning & Implementation
+Package Used - React Flow (For Graph)
+
+# To Start the project in local machine
+
+### `npm install`
+
+### `npm start`
+
+# Implementation
+
+To represent the Neural Graph, I have used React Flow package.
+
+- To represent each operator i.e., Convolution, Relu, etc, I have created a custom node representation.
+- For edges, created two variats one is Line and another is Animated Dashes to highlight the current edge
+- On each node click, a side drawer will open with respective attributes, Input and Output.\
+- Zoom and Pan option available
+- To add & remove nodes dynamically, Change the value of `showInteractive` from `false` to `true`, to play around.
+- Foward/Backward visualize, Click on the `from` or/and `to`, to notice the visual representation of connecting nodes and edges.

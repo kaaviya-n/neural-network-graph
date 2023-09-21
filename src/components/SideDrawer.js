@@ -3,7 +3,7 @@ import { Label } from "./label";
 import "./styles.css";
 
 export const SideDrawer = ({
-  onClick,
+  onClose,
   currentNode,
   isOpen,
   fromCallback,
@@ -15,7 +15,7 @@ export const SideDrawer = ({
     <div className={`side-drawer ${isOpen ? "open" : ""}`}>
       <div className="headWrapper">
         <h1>Node properties</h1>
-        <button onClick={onClick}>x</button>
+        <button onClick={onClose}>x</button>
       </div>
       <div className="bodyWrapper">
         <div className="contentWrapper">
