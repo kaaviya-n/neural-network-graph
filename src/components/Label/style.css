@@ -1,0 +1,10 @@
+.label {
+  background-color: #383838;
+  border-color: #383838;
+  padding: 4px 6px 4px 6px;
+  font-size: 11px;
+  color: #dfdfdf;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}

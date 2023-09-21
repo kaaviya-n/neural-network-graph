@@ -1,4 +1,5 @@
-import { ConvolutionNode } from "../components/convolutionNode";
+import { ConvolutionNode } from "../components/ConvolutionNode";
+import { Tooltip } from "../components/Tooltip";
 
 export const initialNodes = [
   {
@@ -25,7 +26,7 @@ export const initialNodes = [
     id: "2",
     position: { x: 40, y: 150 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -82,7 +83,7 @@ export const initialNodes = [
     id: "5",
     position: { x: -60, y: 350 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -101,7 +102,7 @@ export const initialNodes = [
     id: "6",
     position: { x: 140, y: 350 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -139,7 +140,7 @@ export const initialNodes = [
     id: "8",
     position: { x: 40, y: 600 },
     data: {
-      label: "MaxPool",
+      label: <Tooltip text="Max Pool">MaxPool</Tooltip>,
       parameters: {
         kernel_size: "3, 3",
         pads: "0,0,0,0",
@@ -179,7 +180,7 @@ export const initialNodes = [
     id: "10",
     position: { x: 40, y: 800 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -255,7 +256,7 @@ export const initialNodes = [
     id: "14",
     position: { x: 40, y: 1250 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -312,7 +313,7 @@ export const initialNodes = [
     id: "17",
     position: { x: -60, y: 1450 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -331,7 +332,7 @@ export const initialNodes = [
     id: "18",
     position: { x: 140, y: 1450 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",
@@ -369,7 +370,7 @@ export const initialNodes = [
     id: "20",
     position: { x: 40, y: 1700 },
     data: {
-      label: "MaxPool",
+      label: <Tooltip text="Max Pool">MaxPool</Tooltip>,
       parameters: {
         kernel_size: "3, 3",
         pads: "0,0,0,0",
@@ -409,7 +410,7 @@ export const initialNodes = [
     id: "22",
     position: { x: 40, y: 1900 },
     data: {
-      label: "Relu",
+      label: <Tooltip text="Relu">Relu</Tooltip>,
       parameters: {
         kernel_size: 3,
         type: "relu",

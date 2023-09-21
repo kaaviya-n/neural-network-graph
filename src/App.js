@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import NeuralGraph from "./Home";
+
+import Loader from "./assets/loader.svg";
+
+import "./index.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +14,17 @@ function App() {
     }, 2000);
   }, []);
 
-  return <div>{isLoading ? "Loading..." : <NeuralGraph />}</div>;
+  return (
+    <div>
+      {isLoading ? (
+        <div className="imgWrapper">
+          <img src={Loader} alt="loading..." />
+        </div>
+      ) : (
+        <NeuralGraph />
+      )}
+    </div>
+  );
 }
 
 export default App;

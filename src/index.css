@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.imgWrapper img {
+  width: 20%;
+  height: 700px;
+}

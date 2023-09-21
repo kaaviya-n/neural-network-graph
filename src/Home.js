@@ -13,11 +13,11 @@ import { uniqueEdges, updateNodeStyle } from "./util";
 
 import "reactflow/dist/style.css";
 
-const defaultViewport = { x: 0, y: 0, zoom: 2.5 };
+const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
 const NeuralGraph = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes] = useNodesState(initialNodes);
+  const [edges, setEdges] = useEdgesState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState({});
 
@@ -131,8 +131,8 @@ const NeuralGraph = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
+            // onNodesChange={onNodesChange}
+            // onEdgesChange={onEdgesChange}
             defaultViewport={defaultViewport}
             fitView
             attributionPosition="bottom-left"
@@ -144,7 +144,7 @@ const NeuralGraph = () => {
               defaultEdges();
             }}
           />
-          <Controls showInteractive={false} />
+          <Controls />
           <MiniMap zoomable pannable />
         </div>
       </ReactFlowProvider>

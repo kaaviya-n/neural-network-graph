@@ -1,6 +1,7 @@
 import React from "react";
-import { Label } from "./label";
-import "./styles.css";
+import { Label } from "../Label";
+
+import "./style.css";
 
 export const SideDrawer = ({
   onClose,
