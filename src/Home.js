@@ -66,6 +66,10 @@ const NeuralGraph = () => {
           return output?.map((outValue) => {
             return newEdges.push({
               id: `${item.id}-${outValue}`,
+              label: `id : ${item.id}-${outValue}`,
+              labelStyle: {
+                fontSize: 11,
+              },
               source: item.id,
               target: outValue,
               type: "smoothstep",
