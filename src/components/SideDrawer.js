@@ -45,14 +45,16 @@ export const SideDrawer = ({
           onClick={() => fromCallback(currentNode.id)}
         >
           <h6>from</h6>
-          {input?.map((item) => (
-            <Label value={item} />
-          ))}
+          <div className="labelWrapper">
+            {input?.map((item) => (
+              <Label value={item} />
+            ))}
+          </div>
         </div>
         <h1>Outputs</h1>
         <div className="contentWrapper" onClick={() => toCallback(output)}>
           <h6>to</h6>
-          <div style={{ width: "100%" }}>
+          <div className="labelWrapper">
             {output?.map((item) => (
               <Label value={item} />
             ))}

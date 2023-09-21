@@ -94,3 +94,8 @@ section p {
   text-align: right;
   margin: 0;
 }
+
+.labelWrapper {
+  width: 100%;
+  margin-right: 14px;
+}
