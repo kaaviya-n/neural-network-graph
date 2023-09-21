@@ -1,6 +1,6 @@
 import { ConvolutionNode } from "../components/convolutionNode";
 
-export const inputNodes = [
+export const initialNodes = [
   {
     id: "1",
     position: { x: 0, y: 0 },
