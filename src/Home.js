@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import ReactFlow, {
   ReactFlowProvider,
   Controls,
@@ -10,6 +10,8 @@ import ReactFlow, {
 import { initialNodes } from "./assets/initialNodes";
 import { SideDrawer } from "./components/SideDrawer/SideDrawer";
 import { AddNode } from "./components/AddNode/AddNode";
+import { ConvolutionNode } from "./components/ConvolutionNode/ConvolutionNode";
+import { Tooltip } from "./components/Tooltip/Tooltip";
 import { uniqueEdges, updateNodeStyle } from "./util";
 
 import "reactflow/dist/style.css";
@@ -119,8 +121,51 @@ const NeuralGraph = () => {
         return node.id !== deleted;
       });
       setNodes(updatedNode);
+      setIsOpen(false);
     },
     [nodes, edges]
+  );
+
+  const handleAddNode = useCallback(
+    (operatorType) => {
+      let position = nodes[nodes.length - 1].position.y + 100;
+      setNodes((els) => {
+        return [
+          ...els,
+          {
+            id: (nodes.length + 1).toString(),
+            position: { x: 0, y: position },
+            style:
+              operatorType === "conv"
+                ? {
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                  }
+                : {
+                    width: 70,
+                    height: 36,
+                    backgroundColor: "#4b1b16",
+                    color: "#ffffff",
+                  },
+            data: {
+              label:
+                operatorType === "conv" ? (
+                  <ConvolutionNode valueW="16 x 128 x 1 x 1" valueB="16" />
+                ) : (
+                  <Tooltip text="Relu">Relu</Tooltip>
+                ),
+              parameters: {
+                kernel_size: "3, 3",
+                pads: "0,0,0,0",
+                strides: "1,1",
+                type: operatorType,
+              },
+            },
+          },
+        ];
+      });
+    },
+    [nodes]
   );
 
   return (
@@ -151,7 +196,6 @@ const NeuralGraph = () => {
             onNodeClick={(_, data) => {
               setIsOpen(true);
               setCurrentNode(data);
-              setNodes(initialNodes);
               defaultEdges();
             }}
           />
@@ -159,11 +203,18 @@ const NeuralGraph = () => {
             <button onClick={() => setIsModalOpen(true)}>
               <div>Add Node</div>
             </button>
+            <button onClick={() => setNodes(initialNodes)}>
+              <div>Reset</div>
+            </button>
           </Controls>
           <MiniMap zoomable pannable />
         </div>
       </ReactFlowProvider>
-      <AddNode isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AddNode
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleAddNode}
+      />
     </div>
   );
 };

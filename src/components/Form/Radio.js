@@ -1,9 +1,11 @@
 import React from "react";
 
-export const Radio = ({ label, checked, onChange }) => {
+import "./style.css";
+
+export const Radio = ({ label, checked, onChange, value }) => {
   return (
-    <label>
-      <input type="radio" checked={checked} onChange={onChange} />
+    <label className="radio">
+      <input type="radio" value={value} checked={checked} onChange={onChange} />
       {label}
     </label>
   );
