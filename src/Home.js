@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactFlow, {
   ReactFlowProvider,
   Controls,
@@ -199,13 +199,15 @@ const NeuralGraph = () => {
               defaultEdges();
             }}
           />
-          <Controls>
-            <button onClick={() => setIsModalOpen(true)}>
-              <div>Add Node</div>
-            </button>
-            <button onClick={() => setNodes(initialNodes)}>
-              <div>Reset</div>
-            </button>
+          <Controls className="controlWrapper">
+            <div className="extendWrapper">
+              <button onClick={() => setIsModalOpen(true)}>
+                <div>Add Node</div>
+              </button>
+              <button onClick={() => setNodes(initialNodes)}>
+                <div>Reset</div>
+              </button>
+            </div>
           </Controls>
           <MiniMap zoomable pannable />
         </div>

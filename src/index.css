@@ -22,3 +22,13 @@ code {
   width: 20%;
   height: 700px;
 }
+
+.controlWrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.extendWrapper {
+  display: flex;
+  flex-direction: column;
+}

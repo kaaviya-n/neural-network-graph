@@ -42,26 +42,30 @@ export const SideDrawer = ({
           </>
         )}
         <h1>Inputs</h1>
-        <div
-          className="contentWrapper"
-          onClick={() => fromCallback(currentNode.id)}
-        >
-          <h6>from</h6>
-          <div className="labelWrapper">
-            {input?.map((item) => (
-              <Label value={item} />
-            ))}
+        {input && (
+          <div
+            className="contentWrapper"
+            onClick={() => fromCallback(currentNode.id)}
+          >
+            <h6>from</h6>
+            <div className="labelWrapper">
+              {input?.map((item) => (
+                <Label value={item} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <h1>Outputs</h1>
-        <div className="contentWrapper" onClick={() => toCallback(output)}>
-          <h6>to</h6>
-          <div className="labelWrapper">
-            {output?.map((item) => (
-              <Label value={item} />
-            ))}
+        {output && (
+          <div className="contentWrapper" onClick={() => toCallback(output)}>
+            <h6>to</h6>
+            <div className="labelWrapper">
+              {output?.map((item) => (
+                <Label value={item} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <button className="deleteButton" onClick={() => onDelete(currentNode.id)}>
         Delete Node
