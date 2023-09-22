@@ -19,8 +19,8 @@ import "reactflow/dist/style.css";
 const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
 const NeuralGraph = () => {
-  const [nodes, setNodes] = useNodesState(initialNodes);
-  const [edges, setEdges] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -192,6 +192,8 @@ const NeuralGraph = () => {
             defaultViewport={defaultViewport}
             fitView
             attributionPosition="bottom-left"
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
             snapToGrid={true}
             onNodeClick={(_, data) => {
               setIsOpen(true);

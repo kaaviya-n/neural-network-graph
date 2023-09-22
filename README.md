@@ -53,11 +53,15 @@ Package Used - React Flow (For Graph)
 
 To represent the Neural Graph, I have used React Flow package.
 
-- To represent each operator i.e., Convolution, Relu, etc, I have created a custom node representation.
+- To represent each operator i.e., Convolution, Relu, etc, I have created a `custom node` representation.
 - For edges, created two variats one is Line and another is Animated Dashes to highlight the current edge
-- On each node click, a side drawer will open with respective attributes, Input and Output.\
-- Zoom and Pan option available
-- To add & remove nodes dynamically, Change the value of `showInteractive` from `false` to `true`, to play around.
-- Foward/Backward visualize, Click on the `from` or/and `to`, to notice the visual representation of connecting nodes and edges.
-- Dynamically `Delete` node
+- On each node click, a side drawer will open with respective attributes, Input and Output including `Delete` node option.
+- Control panel in the left bottom corner contains `Zoom in`, `Zoom out`, `Fit View`, `Lock` from editing, `Add` node and `Reset`.
+- Pan option available
 - Dynamically `Add` node
+- Clicking on Add node opens a Modal with respective types to select, newly added node will be visible bottom of the graph.
+- Forward/Backward visualize, Click on the `from` or/and `to`, to notice the visual representation of connecting nodes and edges.
+- Hover on nodes to see the respective operator type.
+- Currently, On clicking on the `from` or/and `to`, edges will show its connecting ids.
+
+- I have used a mock data to curate this graph, after playing around with graph to go back initial representation, use `Reset` button in the controls.
