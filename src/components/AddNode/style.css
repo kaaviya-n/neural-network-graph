@@ -1,0 +1,17 @@
+.contentWrappers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.contentWrappers h6 {
+  min-width: 95px;
+  max-width: 95px;
+  padding-right: 10px;
+  font-size: 11px;
+  color: #000;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+}

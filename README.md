@@ -59,3 +59,5 @@ To represent the Neural Graph, I have used React Flow package.
 - Zoom and Pan option available
 - To add & remove nodes dynamically, Change the value of `showInteractive` from `false` to `true`, to play around.
 - Foward/Backward visualize, Click on the `from` or/and `to`, to notice the visual representation of connecting nodes and edges.
+- Dynamically `Delete` node
+- Dynamically `Add` node

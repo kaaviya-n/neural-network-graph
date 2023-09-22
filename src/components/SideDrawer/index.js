@@ -9,6 +9,7 @@ export const SideDrawer = ({
   isOpen,
   fromCallback,
   toCallback,
+  onDelete,
 }) => {
   const { kernel_size, type, strides, pads, input, output } =
     currentNode.data.parameters;
@@ -62,6 +63,9 @@ export const SideDrawer = ({
           </div>
         </div>
       </div>
+      <button className="deleteButton" onClick={() => onDelete(currentNode.id)}>
+        Delete Node
+      </button>
     </div>
   );
 };

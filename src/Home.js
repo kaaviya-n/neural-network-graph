@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactFlow, {
   ReactFlowProvider,
   Controls,
@@ -9,6 +9,7 @@ import ReactFlow, {
 
 import { initialNodes } from "./assets/initialNodes";
 import { SideDrawer } from "./components/SideDrawer";
+import { AddNode } from "./components/AddNode";
 import { uniqueEdges, updateNodeStyle } from "./util";
 
 import "reactflow/dist/style.css";
@@ -20,6 +21,7 @@ const NeuralGraph = () => {
   const [edges, setEdges] = useEdgesState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const defaultEdges = () => {
     if (initialNodes.length) {
@@ -111,6 +113,16 @@ const NeuralGraph = () => {
     setNodes(newNodes);
   };
 
+  const handleNodeDelete = useCallback(
+    (deleted) => {
+      var updatedNode = nodes.filter((node) => {
+        return node.id !== deleted;
+      });
+      setNodes(updatedNode);
+    },
+    [nodes, edges]
+  );
+
   return (
     <div>
       {isOpen && (
@@ -124,6 +136,7 @@ const NeuralGraph = () => {
           }}
           fromCallback={handleFromNodes}
           toCallback={handleToNodes}
+          onDelete={handleNodeDelete}
         />
       )}
       <ReactFlowProvider>
@@ -131,8 +144,6 @@ const NeuralGraph = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            // onNodesChange={onNodesChange}
-            // onEdgesChange={onEdgesChange}
             defaultViewport={defaultViewport}
             fitView
             attributionPosition="bottom-left"
@@ -144,10 +155,15 @@ const NeuralGraph = () => {
               defaultEdges();
             }}
           />
-          <Controls />
+          <Controls>
+            <button onClick={() => setIsModalOpen(true)}>
+              <div>Add Node</div>
+            </button>
+          </Controls>
           <MiniMap zoomable pannable />
         </div>
       </ReactFlowProvider>
+      <AddNode isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
