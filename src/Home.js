@@ -5,6 +5,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   MiniMap,
+  addEdge,
 } from "reactflow";
 
 import { initialNodes } from "./assets/initialNodes";
@@ -168,6 +169,18 @@ const NeuralGraph = () => {
     [nodes]
   );
 
+  const onConnect = useCallback((params) => {
+    setEdges((eds) =>
+      addEdge(
+        {
+          ...params,
+          id: `${params.source}-${params.target}`,
+        },
+        eds
+      )
+    );
+  }, []);
+
   return (
     <div>
       {isOpen && (
@@ -194,6 +207,7 @@ const NeuralGraph = () => {
             attributionPosition="bottom-left"
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
             snapToGrid={true}
             onNodeClick={(_, data) => {
               setIsOpen(true);
@@ -206,7 +220,12 @@ const NeuralGraph = () => {
               <button onClick={() => setIsModalOpen(true)}>
                 <div>Add Node</div>
               </button>
-              <button onClick={() => setNodes(initialNodes)}>
+              <button
+                onClick={() => {
+                  setNodes(initialNodes);
+                  defaultEdges();
+                }}
+              >
                 <div>Reset</div>
               </button>
             </div>
