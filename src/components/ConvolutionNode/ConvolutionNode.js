@@ -1,7 +1,7 @@
 import React from "react";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 
-import "./style.css";
+import "./ConvolutionNodeStyle.css";
 
 export const ConvolutionNode = ({ valueW, valueB }) => {
   return (

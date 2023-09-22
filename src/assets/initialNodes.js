@@ -1,5 +1,5 @@
-import { ConvolutionNode } from "../components/ConvolutionNode";
-import { Tooltip } from "../components/Tooltip";
+import { ConvolutionNode } from "../components/ConvolutionNode/ConvolutionNode";
+import { Tooltip } from "../components/Tooltip/Tooltip";
 
 export const initialNodes = [
   {

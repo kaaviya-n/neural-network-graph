@@ -8,8 +8,8 @@ import ReactFlow, {
 } from "reactflow";
 
 import { initialNodes } from "./assets/initialNodes";
-import { SideDrawer } from "./components/SideDrawer";
-import { AddNode } from "./components/AddNode";
+import { SideDrawer } from "./components/SideDrawer/SideDrawer";
+import { AddNode } from "./components/AddNode/AddNode";
 import { uniqueEdges, updateNodeStyle } from "./util";
 
 import "reactflow/dist/style.css";

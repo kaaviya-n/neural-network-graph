@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Input } from "../Form/Input";
 import { Radio } from "../Form/Radio";
-import { Modal } from "../Modal";
+import { Modal } from "../Modal/Modal";
 
-import "./style.css";
+import "./AddNodeStyle.css";
 
 export const AddNode = ({ isOpen, onClose }) => {
   const [nodeLabel, setNodeLabel] = useState("");
